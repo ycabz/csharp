@@ -24,6 +24,11 @@ namespace YCabz.Configration
         private string _Filepath;
 
         /// <summary>
+        /// Encoding
+        /// </summary>
+        public Encoding Encoding { get; set; } = Encoding.Default;
+
+        /// <summary>
         /// Comment 구분자
         /// </summary>
         /// <example>Key='Value' ;Comment</example>
@@ -102,7 +107,7 @@ namespace YCabz.Configration
 
             try
             {
-                var textLines = File.ReadAllLines(Filepath);
+                var textLines = File.ReadAllLines(Filepath, Encoding);
                 var section = default(DictionaryINIString);
                 foreach (var textLine in textLines)
                 {
@@ -221,7 +226,7 @@ namespace YCabz.Configration
                 stringbuilder.AppendLine();
             }
 
-            File.WriteAllText(Filepath, stringbuilder.ToString());
+            File.WriteAllText(Filepath, stringbuilder.ToString(), Encoding);
         }
     }
 }
