@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.31729.503
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "YCabz", "YCabz.csproj", "{D78EB165-5C8E-4BC6-BB21-D29A402994AB}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "YCabzTestForm", "..\YCabzTestForm\YCabzTestForm.csproj", "{AF294344-B1FB-47BD-8B24-8943D8419ECD}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{D78EB165-5C8E-4BC6-BB21-D29A402994AB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D78EB165-5C8E-4BC6-BB21-D29A402994AB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D78EB165-5C8E-4BC6-BB21-D29A402994AB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D78EB165-5C8E-4BC6-BB21-D29A402994AB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AF294344-B1FB-47BD-8B24-8943D8419ECD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AF294344-B1FB-47BD-8B24-8943D8419ECD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AF294344-B1FB-47BD-8B24-8943D8419ECD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AF294344-B1FB-47BD-8B24-8943D8419ECD}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {5CCA30A4-E250-4269-8D91-BAEA897A35F6}
+	EndGlobalSection
+EndGlobal
