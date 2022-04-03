@@ -47,6 +47,11 @@
     <Compile Include="Configration\DictionaryINIString.cs" />
     <Compile Include="ExtensionMethod.cs" />
     <Compile Include="Logger\TextLogWriter.cs" />
+    <Compile Include="Network\ITcpTextClient.cs" />
+    <Compile Include="Network\ITcpTextServer.cs" />
+    <Compile Include="Network\TcpText.cs" />
+    <Compile Include="Network\TcpTextClient.cs" />
+    <Compile Include="Network\TcpTextServer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup />

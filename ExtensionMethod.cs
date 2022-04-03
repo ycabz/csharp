@@ -27,5 +27,14 @@ namespace YCabz
         {
             return str.Split(new char[] { separator }, StringSplitOptions.RemoveEmptyEntries);
         }
+
+
+        public static void Clear(this byte[] buffer)
+        {
+            if (buffer != null)
+            {
+                Array.Clear(buffer, 0, buffer.Length);
+            }
+        }
     }
 }
