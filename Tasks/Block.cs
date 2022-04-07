@@ -301,5 +301,71 @@ namespace YCabz.Tasks
         protected abstract void RunJob(T Job);
 
 
+        /// <summary>
+        /// 두 Block을 연결한다
+        /// </summary>
+        /// <param name="flags">연결후 실행 Block</param>
+        public static void Connect(Block<T> previous, Block<T> next, BlockActionFlags flags)
+        {
+            if (previous == null || next == null)
+            {
+                throw new NullReferenceException();
+            }
+
+            previous.NextBlock = next;
+            next.PreviousBlock = previous;
+
+            switch (flags)
+            {
+                case BlockActionFlags.None:
+                    break;
+                case BlockActionFlags.Previous:
+                    previous.Run();
+                    break;
+                case BlockActionFlags.Next:
+                    next.Run();
+                    break;
+                case BlockActionFlags.Both:
+                    previous.Run();
+                    next.Run();
+                    break;
+                default:
+                    throw new InvalidCastException($"{flags.ToString()}");
+            }
+        }
+
+        /// <summary>
+        /// 두 Block을 연결해제 한다
+        /// </summary>
+        /// <param name="flags">연결 해제 후 Block</param>
+        public static void Disconnect(Block<T> previous, Block<T> next, BlockActionFlags flags)
+        {
+            if (previous == null || next == null)
+            {
+                throw new NullReferenceException();
+            }
+
+            previous.NextBlock = null;
+            next.PreviousBlock = null;
+
+            switch (flags)
+            {
+                case BlockActionFlags.None:
+                    break;
+                case BlockActionFlags.Previous:
+                    previous.Stop();
+                    break;
+                case BlockActionFlags.Next:
+                    next.Stop();
+                    break;
+                case BlockActionFlags.Both:
+                    previous.Stop();
+                    next.Stop();
+                    break;
+                default:
+                    throw new InvalidCastException($"{flags.ToString()}");
+            }
+        }
+
     }
 }
