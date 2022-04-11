@@ -36,6 +36,7 @@ namespace YCabz.Configration
             get => _CommentSeparator;
             set
             {
+                // CommentSeparator 사용금지
                 if (value == '[' || value == ']' || value == '=' || value == '\'')
                 {
                     throw new InvalidDataException("Invalid Splitor: ('[', ']', '=', '\'')");
@@ -47,7 +48,7 @@ namespace YCabz.Configration
         private static char _CommentSeparator = ';';
 
 
-        private Dictionary<DictionaryINIString, DictionaryINIKeyValuePairs> dictionary = new Dictionary<DictionaryINIString, DictionaryINIKeyValuePairs>();
+        private readonly Dictionary<DictionaryINIString, DictionaryINIKeyValuePairs> dictionary = new Dictionary<DictionaryINIString, DictionaryINIKeyValuePairs>();
         private string commentSplitorHint;
         private bool isLoaded;
 
@@ -97,13 +98,13 @@ namespace YCabz.Configration
         /// </summary>
         public void Load()
         {
+            // Clear Dictionary
             Clear();
 
             if (File.Exists(Filepath) == false)
             {
                 throw new FileNotFoundException($"{Filepath}");
             }
-
             try
             {
                 var textLines = File.ReadAllLines(Filepath, Encoding);
