@@ -1,20 +1,18 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
+using INIString = YCabz.Configration.DictionaryINIString;
+using INIValue = YCabz.Configration.DictionaryINIValue;
 
 namespace YCabz.Configration
 {
     public class DictionaryINIKeyValuePairs
     {
-        internal Dictionary<DictionaryINIString, DictionaryINIValue> Dictionary { get; } = new Dictionary<DictionaryINIString, DictionaryINIValue>();
+        internal Dictionary<INIString, INIValue> Dictionary { get; } = new Dictionary<INIString, INIValue>();
 
         internal DictionaryINIKeyValuePairs()
         {
         }
 
-        public DictionaryINIValue this[DictionaryINIString key]
+        public INIValue this[INIString key]
         {
             get
             {

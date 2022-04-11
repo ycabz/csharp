@@ -4,6 +4,10 @@ using System.IO;
 using System.Linq;
 using System.Text;
 
+using INIKeyValuePairs = YCabz.Configration.DictionaryINIKeyValuePairs;
+using INIString = YCabz.Configration.DictionaryINIString;
+using INIValue = YCabz.Configration.DictionaryINIValue;
+
 namespace YCabz.Configration
 {
     public class DictionaryINI
@@ -48,12 +52,12 @@ namespace YCabz.Configration
         private static char _CommentSeparator = ';';
 
 
-        private readonly Dictionary<DictionaryINIString, DictionaryINIKeyValuePairs> dictionary = new Dictionary<DictionaryINIString, DictionaryINIKeyValuePairs>();
+        private readonly Dictionary<INIString, INIKeyValuePairs> dictionary = new Dictionary<INIString, INIKeyValuePairs>();
         private string commentSplitorHint;
         private bool isLoaded;
 
 
-        public DictionaryINIKeyValuePairs this[DictionaryINIString section]
+        public INIKeyValuePairs this[INIString section]
         {
             get
             {
@@ -64,7 +68,7 @@ namespace YCabz.Configration
 
                 if (dictionary.ContainsKey(section) == false)
                 {
-                    dictionary.Add(section, new DictionaryINIKeyValuePairs());
+                    dictionary.Add(section, new INIKeyValuePairs());
                 }
 
                 return dictionary[section];
@@ -108,7 +112,7 @@ namespace YCabz.Configration
             try
             {
                 var textLines = File.ReadAllLines(Filepath, Encoding);
-                var section = default(DictionaryINIString);
+                var section = default(INIString);
                 foreach (var textLine in textLines)
                 {
                     var trimmed = textLine.Trim();
@@ -127,7 +131,7 @@ namespace YCabz.Configration
                         && (equalMarkIndex < 0 || equalMarkIndex > braketEndMarkIndex))
                     {
                         section = trimmed.Substring(braketStartMarkIndex + 1, braketEndMarkIndex - braketStartMarkIndex - 1);
-                        dictionary[section] = new DictionaryINIKeyValuePairs();
+                        dictionary[section] = new INIKeyValuePairs();
                         continue;
                     }
 
@@ -151,7 +155,7 @@ namespace YCabz.Configration
                             .SplitWithoutEmptyEntries(CommentSeparator);
 
                         // valueCommentPairs의 길이가 1보다 크면  Comment가 존재함
-                        dictionary[section][key] = new DictionaryINIValue(valueCommentPairs[0].Trim('\'', '\t', ' '), valueCommentPairs.Length > 1 ? valueCommentPairs[1].Trim() : string.Empty);
+                        dictionary[section][key] = new INIValue(valueCommentPairs[0].Trim('\'', '\t', ' '), valueCommentPairs.Length > 1 ? valueCommentPairs[1].Trim() : string.Empty);
                     }
                 }
 

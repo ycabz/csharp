@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using INIString = YCabz.Configration.DictionaryINIString;
 
 namespace YCabz.Configration
 {
@@ -34,7 +30,7 @@ namespace YCabz.Configration
 
         public override bool Equals(object obj)
         {
-            var iniString = obj as DictionaryINIString;
+            var iniString = obj as INIString;
             if (iniString != null)
             {
                 return KeyString == iniString.KeyString;
@@ -44,7 +40,7 @@ namespace YCabz.Configration
         public override string ToString() => RealString;
         public override int GetHashCode() => KeyString.GetHashCode();
 
-        public static implicit operator string(DictionaryINIString value) => value?.RealString;
-        public static implicit operator DictionaryINIString(string value) => new DictionaryINIString(value);
+        public static implicit operator string(INIString value) => value?.RealString;
+        public static implicit operator INIString(string value) => new INIString(value);
     }
 }

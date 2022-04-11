@@ -1,8 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using INIValue = YCabz.Configration.DictionaryINIValue;
 
 namespace YCabz.Configration
 {
@@ -155,34 +152,34 @@ namespace YCabz.Configration
 
         #region Implicit
 
-        public static implicit operator bool(DictionaryINIValue value) => value.ToBool();
-        public static implicit operator DictionaryINIValue(bool value) => new DictionaryINIValue(value.ToString());
-        public static implicit operator byte(DictionaryINIValue value) => value.ToByte();
-        public static implicit operator DictionaryINIValue(byte value) => new DictionaryINIValue(value.ToString());
-        public static implicit operator sbyte(DictionaryINIValue value) => value.TobyteSigned();
-        public static implicit operator DictionaryINIValue(sbyte value) => new DictionaryINIValue(value.ToString());
-        public static implicit operator short(DictionaryINIValue value) => value.ToShort();
-        public static implicit operator DictionaryINIValue(short value) => new DictionaryINIValue(value.ToString());
-        public static implicit operator ushort(DictionaryINIValue value) => value.ToShortUnsigned();
-        public static implicit operator DictionaryINIValue(ushort value) => new DictionaryINIValue(value.ToString());
-        public static implicit operator int(DictionaryINIValue value) => value.ToInt();
-        public static implicit operator DictionaryINIValue(int value) => new DictionaryINIValue(value.ToString());
-        public static implicit operator uint(DictionaryINIValue value) => value.ToIntUnsigned();
-        public static implicit operator DictionaryINIValue(uint value) => new DictionaryINIValue(value.ToString());
-        public static implicit operator long(DictionaryINIValue value) => value.ToLong();
-        public static implicit operator DictionaryINIValue(long value) => new DictionaryINIValue(value.ToString());
-        public static implicit operator ulong(DictionaryINIValue value) => value.ToLongUnsigned();
-        public static implicit operator DictionaryINIValue(ulong value) => new DictionaryINIValue(value.ToString());
-        public static implicit operator float(DictionaryINIValue value) => value.ToFloat();
-        public static implicit operator DictionaryINIValue(float value) => new DictionaryINIValue(value.ToString());
-        public static implicit operator double(DictionaryINIValue value) => value.ToDouble();
-        public static implicit operator DictionaryINIValue(double value) => new DictionaryINIValue(value.ToString());
-        public static implicit operator decimal(DictionaryINIValue value) => value.ToDecimal();
-        public static implicit operator DictionaryINIValue(decimal value) => new DictionaryINIValue(value.ToString());
-        public static implicit operator string(DictionaryINIValue value) => value.Value;
-        public static implicit operator DictionaryINIValue(string value) => new DictionaryINIValue(value);
-        public static implicit operator char(DictionaryINIValue value) => value.ToChar();
-        public static implicit operator DictionaryINIValue(char value) => new DictionaryINIValue(value.ToString());
+        public static implicit operator bool(INIValue value) => value.ToBool();
+        public static implicit operator INIValue(bool value) => new INIValue(value.ToString());
+        public static implicit operator byte(INIValue value) => value.ToByte();
+        public static implicit operator INIValue(byte value) => new INIValue(value.ToString());
+        public static implicit operator sbyte(INIValue value) => value.TobyteSigned();
+        public static implicit operator INIValue(sbyte value) => new INIValue(value.ToString());
+        public static implicit operator short(INIValue value) => value.ToShort();
+        public static implicit operator INIValue(short value) => new INIValue(value.ToString());
+        public static implicit operator ushort(INIValue value) => value.ToShortUnsigned();
+        public static implicit operator INIValue(ushort value) => new INIValue(value.ToString());
+        public static implicit operator int(INIValue value) => value.ToInt();
+        public static implicit operator INIValue(int value) => new INIValue(value.ToString());
+        public static implicit operator uint(INIValue value) => value.ToIntUnsigned();
+        public static implicit operator INIValue(uint value) => new INIValue(value.ToString());
+        public static implicit operator long(INIValue value) => value.ToLong();
+        public static implicit operator INIValue(long value) => new INIValue(value.ToString());
+        public static implicit operator ulong(INIValue value) => value.ToLongUnsigned();
+        public static implicit operator INIValue(ulong value) => new INIValue(value.ToString());
+        public static implicit operator float(INIValue value) => value.ToFloat();
+        public static implicit operator INIValue(float value) => new INIValue(value.ToString());
+        public static implicit operator double(INIValue value) => value.ToDouble();
+        public static implicit operator INIValue(double value) => new INIValue(value.ToString());
+        public static implicit operator decimal(INIValue value) => value.ToDecimal();
+        public static implicit operator INIValue(decimal value) => new INIValue(value.ToString());
+        public static implicit operator string(INIValue value) => value.Value;
+        public static implicit operator INIValue(string value) => new INIValue(value);
+        public static implicit operator char(INIValue value) => value.ToChar();
+        public static implicit operator INIValue(char value) => new INIValue(value.ToString());
 
         #endregion
     }
