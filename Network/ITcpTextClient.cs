@@ -6,8 +6,9 @@ namespace YCabz.Network
 {
     public interface ITcpTextClient
     {
+        Encoding Encoding { get; set; }
         Task<Socket> Connect(string ipString, int port);
-        Task<string> ReceiveText(Socket socket, Encoding encoding, int bufferMaxSize);
-        Task SendText(Socket socket, Encoding encoding, string message, int bufferMaxSize);
+        Task<string> ReceiveText(Socket socket, int bufferSize);
+        Task SendText(Socket socket,  string message, int bufferSize);
     }
 }
