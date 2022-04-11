@@ -54,6 +54,7 @@
     <Compile Include="Network\TcpTextServer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Tasks\Block.cs" />
+    <Compile Include="Tasks\BlockActionFlags.cs" />
     <Compile Include="Tasks\Worker.cs" />
   </ItemGroup>
   <ItemGroup />

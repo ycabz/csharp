@@ -243,6 +243,7 @@ namespace YCabz.Tasks
             }
         }
 
+
         private void Enqueue(T job)
         {
             if (IsRunning == false)
@@ -284,7 +285,6 @@ namespace YCabz.Tasks
                     // 보류 요청이 있으면 Thread 대기
                     jobResetEvent.WaitOne();
                 }
-
                 catch (ObjectDisposedException)
                 {
                     // When ResetEventDisposed
@@ -304,18 +304,32 @@ namespace YCabz.Tasks
         /// <summary>
         /// 두 Block을 연결한다
         /// </summary>
-        /// <param name="flags">연결후 실행 Block</param>
-        public static void Connect(Block<T> previous, Block<T> next, BlockActionFlags flags)
+        /// <param name="runFlag">연결후 실행 Block</param>
+        public static void Connect(Block<T> previous, Block<T> next, BlockActionFlags runFlag)
         {
             if (previous == null || next == null)
             {
                 throw new NullReferenceException();
             }
 
+            // Previous Block이 기존 연결이 있으면
+            if (previous.NextBlock != null)
+            {
+                // 해당 연결 제거
+                previous.NextBlock.PreviousBlock = null;
+            }
+
+            // Nest Block이 기존 연결이 있으면
+            if (next.PreviousBlock != null)
+            {
+                // 해당 연결 제거
+                next.PreviousBlock.NextBlock = null;
+            }
+
             previous.NextBlock = next;
             next.PreviousBlock = previous;
 
-            switch (flags)
+            switch (runFlag)
             {
                 case BlockActionFlags.None:
                     break;
@@ -330,25 +344,31 @@ namespace YCabz.Tasks
                     next.Run();
                     break;
                 default:
-                    throw new InvalidCastException($"{flags.ToString()}");
+                    throw new InvalidCastException($"{runFlag.ToString()}");
             }
         }
 
         /// <summary>
         /// 두 Block을 연결해제 한다
         /// </summary>
-        /// <param name="flags">연결 해제 후 Block</param>
-        public static void Disconnect(Block<T> previous, Block<T> next, BlockActionFlags flags)
+        /// <param name="stopFlag">연결 해제 후 Block</param>
+        public static void Disconnect(Block<T> previous, Block<T> next, BlockActionFlags stopFlag)
         {
             if (previous == null || next == null)
             {
                 throw new NullReferenceException();
             }
 
+            // Check Connection
+            if (previous.NextBlock != next || next.PreviousBlock != previous)
+            {
+                throw new NotImplementedException("Not Connected");
+            }
+
             previous.NextBlock = null;
             next.PreviousBlock = null;
 
-            switch (flags)
+            switch (stopFlag)
             {
                 case BlockActionFlags.None:
                     break;
@@ -363,9 +383,8 @@ namespace YCabz.Tasks
                     next.Stop();
                     break;
                 default:
-                    throw new InvalidCastException($"{flags.ToString()}");
+                    throw new InvalidCastException($"{stopFlag.ToString()}");
             }
         }
-
     }
 }
