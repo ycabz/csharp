@@ -141,12 +141,19 @@ namespace YCabz.Logger
             }
         }
 
-
+        /// <summary>
+        /// Default Current Directory Pattern
+        /// </summary>
+        /// <returns>Current Directory</returns>
         private string GetCurrentDirecotry()
         {
             return Path.Combine(topDirectory, $"{DateTime.Now.ToString("yyyy-MM-dd")}");
         }
 
+        /// <summary>
+        ///  Default Current FileName Pattern
+        /// </summary>
+        /// <returns>Current FileName</returns>
         private string GetCurrentFileNameWithExtension()
         {
             return $"{logFileName}_{ $"{DateTime.Now.ToString("yyyy-MM-dd")}"}.{logFileExtension}";
