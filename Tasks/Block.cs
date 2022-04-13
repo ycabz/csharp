@@ -82,12 +82,8 @@ namespace YCabz.Tasks
                 lock (runningLock)
                 {
                     _IsRunning = value;
-
-                    if (_IsRunning == false)
-                    {
-                        // 중지하면 Queue Item을 지운다
-                        ClearJob();
-                    }
+                    // 상태 변경 시, 기존 Job 제거
+                    ClearJob();
                 }
             }
         }
@@ -274,7 +270,7 @@ namespace YCabz.Tasks
                         RunJob(job);
 
                         // 연결된 Block이 있으면 Job을 넘겨준다
-                        if (NextBlock != null)
+                        if (NextBlock != null && IsRunning == true)
                         {
                             NextBlock.Add(job);
                         }
