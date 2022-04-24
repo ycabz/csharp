@@ -29,12 +29,13 @@ namespace YCabz.Util
         /// <remarks>Max CPU Count를 넘으면 안된다</remarks>
         public static void SetAffinity(params uint[] usingCore)
         {
-            // null 이면 전무 사용
+            // 매개변수가 없으면 All
             if (usingCore == null || usingCore.Length == 0)
             {
                 usingCore = Enumerable.Range(0, Environment.ProcessorCount).Select(p => (uint)p).ToArray();
             }
 
+            // 최대 Cpu수보다 설정된 Core번호가 크면 Error
             if (usingCore.Count(p => p >= Environment.ProcessorCount) > 0)
             {
                 throw new ArgumentException("Cannot be greater than max number of cores");
@@ -46,9 +47,7 @@ namespace YCabz.Util
                 mask |= 0x0001 << (int)core;
             }
 
-            var process = Process.GetCurrentProcess();
-            process.Refresh();
-            process.ProcessorAffinity = (IntPtr)mask;
+            Process.GetCurrentProcess().ProcessorAffinity = (IntPtr)mask;
         }
     }
 }
